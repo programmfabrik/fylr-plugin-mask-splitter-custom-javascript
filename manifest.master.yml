@@ -1,0 +1,38 @@
+plugin:
+  name: fylr-plugin-mask-splitter-custom-javascript
+  version: 1.0
+  url: https://github.com/programmfabrik/fylr-plugin-mask-splitter-custom-javascript
+  displayname:
+    de-DE: Mask Splitter Custom Javascript
+    en-US: Mask Splitter Custom Javascript
+  l10n: l10n/MaskSplitterCustomJavascript.csv
+  info:
+    de-DE: "Ein plugin das es erlaubt eigenes Javascript in einem Mask Splitter zu verwenden."
+    en-US: "A plugin that allows the use of custom javascript in a mask splitter."
+  webfrontend:
+    url: MaskSplitterCustomJavascript.js
+    css: MaskSplitterCustomJavascript.css
+    dependencies:
+      - commons-library
+    
+base_url_prefix: "webfrontend"
+
+base_config:
+  - name: custom_javascript
+    parameters:
+      value:
+        type: table
+        position: 0
+        fields:
+          - name: javascript_name
+            type: text
+            position: 0
+          - name: javascript_code
+            type: text-multiline
+            position: 1
+          - name: show_in_editor
+            type: bool
+            position: 2
+          - name: show_in_detail
+            type: bool
+            position: 3
