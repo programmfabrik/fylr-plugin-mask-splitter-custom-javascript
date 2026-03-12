@@ -13,12 +13,18 @@ class MaskSplitterCustomJavascript extends CustomMaskSplitter
         ]
 
     renderField: (opts) ->
+
+        if(opts.mode != 'detail' && opts.mode != 'editor') 
+            return;
+        uuid = crypto.randomUUID()
         data = opts.data
         baseConfig = ez5.session.getBaseConfig("plugin", "fylr-plugin-mask-splitter-custom-javascript")
         javascriptName = @getDataOptions().javascript_name
         console.log "MaskSplitterCustomJavascript.renderField opts: ", opts
         console.log "MaskSplitterCustomJavascript.base config: ", baseConfig
         console.log "MaskSplitterCustomJavascript.javascript_name: ", javascriptName
+
+
 
         if !javascriptName
             return new CUI.Label("MaskSplitterCustomJavascript: " + $$("mask.splitter.custom.javascript.message.javascript_name_missing"))
@@ -29,21 +35,36 @@ class MaskSplitterCustomJavascript extends CustomMaskSplitter
         if !baseConfigCustomJavascript?.javascript_code 
             return new CUI.Label("MaskSplitterCustomJavascript: " + $$("mask.splitter.custom.javascript.message.no_code_found_for_name"))
 
+        if(opts.mode == 'detail' && !baseConfigCustomJavascript?.show_in_detail) 
+            return;
+        if(opts.mode == 'editor' && !baseConfigCustomJavascript?.show_in_editor) 
+            return;
+
+
+        div = document.createElement 'div'
+        div.setAttribute('id', 'mask-splitter-custom-javascript-' + uuid)
 
         try
-            customFunction = new Function('opts', baseConfigCustomJavascript.javascript_code)
+            AsyncFunction = MaskSplitterCustomJavascriptUtils.getAsyncFunctionConstructor()
+            customFunction = new AsyncFunction('opts', baseConfigCustomJavascript.javascript_code)
             try
-                resultValue = customFunction(opts)
+                customFunction(opts).then((resultValue) ->
+                    console.log resultValue
+                    if(!resultValue) 
+                        return;
 
-                if resultValue instanceof CUI.Element
-                    return resultValue
-                else    
-                    return new CUI.Label(text: "MaskSplitterCustomJavascript: " + $$("mask.splitter.custom.javascript.message.wrong_function_return_value"))
-
-
+                    if resultValue instanceof Element
+                        div.appendChild(resultValue)
+                    else if typeof resultValue == 'string' || resultValue instanceof String
+                        div.innerHTML = resultValue
+                    else 
+                        div.innerHTML = "MaskSplitterCustomJavascript: " + $$("mask.splitter.custom.javascript.message.wrong_function_return_value")
+                )
             catch error
                 console.error "MaskSplitterCustomJavascript: Error executing custom Javascript:", error.message
         catch error
-            console.error "MaskSplitterCustomJavascript: Error when creating Javascript-Function:", error.message        
+            console.error "MaskSplitterCustomJavascript: Error when creating Javascript-Function:", error.message
+        
+        return div
 
 MaskSplitter.plugins.registerPlugin(MaskSplitterCustomJavascript)

@@ -19,6 +19,7 @@ build: clean buildinfojson ## build plugin
 	mkdir -p src/tmp # build code from coffee
 	cp src/webfrontend/*.coffee src/tmp
 	cd src/tmp && coffee -b --compile ${COFFEE_FILES} # bare-parameter is obligatory!
+	cp src/webfrontend/*.js src/tmp
 	cat src/tmp/*.js > build/$(PLUGIN_NAME)/webfrontend/MaskSplitterCustomJavascript.js
 	rm -rf src/tmp # clean tmp
 
