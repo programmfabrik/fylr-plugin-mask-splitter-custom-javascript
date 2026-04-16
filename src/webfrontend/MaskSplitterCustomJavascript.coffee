@@ -18,7 +18,7 @@ class MaskSplitterCustomJavascript extends CustomMaskSplitter
             return;
         uuid = crypto.randomUUID()
         data = opts.data
-        baseConfig = ez5.session.getBaseConfig("plugin", "fylr-plugin-mask-splitter-custom-javascript")
+        baseConfig = ez5.session.getBaseConfig("plugin", "mask-splitter-custom-javascript")
         javascriptName = @getDataOptions().javascript_name
         console.log "MaskSplitterCustomJavascript.renderField opts: ", opts
         console.log "MaskSplitterCustomJavascript.base config: ", baseConfig
