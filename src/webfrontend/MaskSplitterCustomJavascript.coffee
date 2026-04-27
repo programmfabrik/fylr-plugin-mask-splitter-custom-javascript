@@ -27,13 +27,19 @@ class MaskSplitterCustomJavascript extends CustomMaskSplitter
 
 
         if !javascriptName
-            return new CUI.Label("MaskSplitterCustomJavascript: " + $$("mask.splitter.custom.javascript.message.javascript_name_missing"))
+            return new CUI.Label(
+                text: "MaskSplitterCustomJavascript: " + $$("mask.splitter.custom.javascript.message.javascript_name_missing")
+            )
         if !Array.isArray(baseConfig.custom_javascript.value) || baseConfig?.custom_javascript?.value.length < 1
-            return new CUI.Label("MaskSplitterCustomJavascript: " + $$("mask.splitter.custom.javascript.message.base_config_missing"))
+            return new CUI.Label(
+                text: "MaskSplitterCustomJavascript: " + $$("mask.splitter.custom.javascript.message.base_config_missing")
+            )
 
         baseConfigCustomJavascript = baseConfig.custom_javascript.value.find((value) => value.javascript_name == javascriptName) 
         if !baseConfigCustomJavascript?.javascript_code 
-            return new CUI.Label("MaskSplitterCustomJavascript: " + $$("mask.splitter.custom.javascript.message.no_code_found_for_name"))
+            return new CUI.Label(
+                text: "MaskSplitterCustomJavascript: " + $$("mask.splitter.custom.javascript.message.no_code_found_for_name")
+            )
 
         if(opts.mode == 'detail' && !baseConfigCustomJavascript?.show_in_detail) 
             return;
