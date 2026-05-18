@@ -4,7 +4,7 @@ mask.splitter.custom.javascript.title|text,Mask Splitter Custom Javascript,Mask 
 mask.splitter.custom.javascript.message.javascript_name_missing,Javascript Name fehlt in den Mask Splitter Optionen.,Javascript Name is missing from splitter options.
 mask.splitter.custom.javascript.message.base_config_missing,Basis-Konfiguration fehlt.,Base config is missing.
 mask.splitter.custom.javascript.message.no_code_found_for_name,Für den konfigurierent Namen konnte kein Quellcode gefunden werden.,No code found in base config for the configured name.
-mask.splitter.custom.javascript.message.wrong_function_return_value,Die Funktion hat keine Instanz von Element oder einen String zurückgegeben.,The function did not return an instance of Element or a string.
+mask.splitter.custom.javascript.message.wrong_function_return_value,"Die Funktion hat keine Instanz von Element, CUI.Element oder einen String zurückgegeben.","The function did not return an instance of Element, CUI.Element or a string."
 mask.splitter.panel.spliter_name.mask-splitter-custom-javascript-end|text,Ende Custom Javascript,Custom Javascript End
 server.config.name.system.custom_javascript,Custom Javascript,Custom Javascript
 server.config.parameter.system.custom_javascript.value.label,Custom Javascript Konfiguration,Custom Javascript Config

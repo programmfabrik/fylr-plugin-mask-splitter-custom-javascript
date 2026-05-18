@@ -47,7 +47,8 @@ class MaskSplitterCustomJavascript extends CustomMaskSplitter
             return;
 
 
-        div = document.createElement 'div'
+        div = CUI.dom.div()
+
         div.setAttribute('id', 'mask-splitter-custom-javascript-' + uuid)
 
         try
@@ -59,8 +60,8 @@ class MaskSplitterCustomJavascript extends CustomMaskSplitter
                     if(!resultValue) 
                         return;
 
-                    if resultValue instanceof Element
-                        div.appendChild(resultValue)
+                    if resultValue instanceof Element or resultValue instanceof CUI.Element
+                        CUI.dom.append(div, resultValue)
                     else if typeof resultValue == 'string' || resultValue instanceof String
                         div.innerHTML = resultValue
                     else 

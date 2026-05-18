@@ -20,7 +20,7 @@ The base-config has a repeatable block of 4 fields and the mask splitter created
 
 #### base-config
 - __Name__: The name that will be used to identify the javascript
-- __Javascript-Function__: The function that will be executed by the mask splitter. The function is asynchronous and will get the same parameters as the renderField-function in the mask splitter. You only need to write the content of the function, not the definition. The function must return an instance of Element, a string or null.
+- __Javascript-Function__: The function that will be executed by the mask splitter. The function is asynchronous and will get the same parameters as the renderField-function in the mask splitter. You only need to write the content of the function, not the definition. The function must return an instance of Element, CUI.Element, a string or null.
 ```
 async function (opts) {
     // only write what is between the function parenthesis
