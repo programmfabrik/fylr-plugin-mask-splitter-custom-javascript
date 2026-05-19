@@ -57,7 +57,8 @@ class MaskSplitterCustomJavascript extends CustomMaskSplitter
             try
                 customFunction(opts).then((resultValue) ->
                     console.log resultValue
-                    if(!resultValue) 
+                    if(!resultValue)
+                        div.remove()
                         return;
 
                     if resultValue instanceof Element or resultValue instanceof CUI.Element
