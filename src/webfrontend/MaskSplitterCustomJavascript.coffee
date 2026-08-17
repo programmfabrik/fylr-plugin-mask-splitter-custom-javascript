@@ -20,9 +20,6 @@ class MaskSplitterCustomJavascript extends CustomMaskSplitter
         data = opts.data
         baseConfig = ez5.session.getBaseConfig("plugin", "mask-splitter-custom-javascript")
         javascriptName = @getDataOptions().javascript_name
-        console.log "MaskSplitterCustomJavascript.renderField opts: ", opts
-        console.log "MaskSplitterCustomJavascript.base config: ", baseConfig
-        console.log "MaskSplitterCustomJavascript.javascript_name: ", javascriptName
 
 
 
@@ -56,7 +53,6 @@ class MaskSplitterCustomJavascript extends CustomMaskSplitter
             customFunction = new AsyncFunction('opts', baseConfigCustomJavascript.javascript_code)
             try
                 customFunction(opts).then((resultValue) ->
-                    console.log resultValue
                     if(!resultValue)
                         div.remove()
                         return;

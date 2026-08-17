@@ -23,8 +23,6 @@ build: clean buildinfojson ## build plugin
 	cat src/tmp/*.js > build/$(PLUGIN_NAME)/webfrontend/MaskSplitterCustomJavascript.js
 	rm -rf src/tmp # clean tmp
 
-	cp src/webfrontend/css/MaskSplitterCustomJavascript.css build/$(PLUGIN_NAME)/webfrontend/MaskSplitterCustomJavascript.css # copy css
-
 	cp l10n/MaskSplitterCustomJavascript.csv build/$(PLUGIN_NAME)/l10n/MaskSplitterCustomJavascript.csv # copy l10n
 
 	cp manifest.master.yml build/$(PLUGIN_NAME)/manifest.yml # copy manifest

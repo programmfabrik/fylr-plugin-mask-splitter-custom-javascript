@@ -11,7 +11,6 @@ plugin:
     en-US: "A plugin that allows the use of custom javascript in a mask splitter."
   webfrontend:
     url: MaskSplitterCustomJavascript.js
-    css: MaskSplitterCustomJavascript.css
     dependencies:
       - commons-library
     
